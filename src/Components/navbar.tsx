@@ -1,27 +1,17 @@
-import React, {useState} from 'react'
-const Navbar = () => {
-  const [dark, darkSet] = useState(false)
-  let element = "true"
-  function darkmode () {
-    darkSet(!dark)
-  }
-  useEffect(() => {
-    if (dark == false) {
-      element = "true"
-    } else {
-      element = "false"
-    }
-  }, [dark])
-  
-  
+import React from 'react'
+interface NavbarProps {
+  mode: string,
+  text: string
+}
+const Navbar:React.FC<NavbarProps> = ({mode, text}) => {
   return (
-    <div className="bg-black text-white">
-      <span className="">Portofolio</span>
-      <div className="flex justify-between gap-4">
-        <div className="hover:text-white">Home</div>
-        <div className="hover:text-white">Contact</div>
-        <div className="hover:text-white">Blog</div>
+    <div className={"flex justify-between gap-4 bg-[#343434] opacity-80 m-2 p-3 rounded-lg text-white w-[92%] fixed border-2 border-gray-700 " + mode}>
+      <div className="font-bold opacity-100">
+        Portofolio
       </div>
+      <button className='opacity-100'>
+        {text}
+      </button>
     </div>
   );
 };
